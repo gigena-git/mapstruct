@@ -39,6 +39,8 @@ public enum Message {
     BEANMAPPING_UNMAPPED_FORGED_TARGETS_ERROR( "Unmapped target %s. Mapping from %s to %s." ),
     BEANMAPPING_UNMAPPED_SOURCES_WARNING( "Unmapped source %s.", Diagnostic.Kind.WARNING ),
     BEANMAPPING_UNMAPPED_SOURCES_ERROR( "Unmapped source %s." ),
+    BEANMAPPING_UNMAPPED_FORGED_SOURCES_WARNING( "Unmapped source %s. Mapping from %s to %s.", Diagnostic.Kind.WARNING ),
+    BEANMAPPING_UNMAPPED_FORGED_SOURCES_ERROR( "Unmapped source %s. Mapping from %s to %s." ),
     BEANMAPPING_MISSING_IGNORED_SOURCES_ERROR( "Ignored unknown source %s." ),
     BEANMAPPING_CYCLE_BETWEEN_PROPERTIES( "Cycle(s) between properties given via dependsOn(): %s." ),
     BEANMAPPING_UNKNOWN_PROPERTY_IN_DEPENDS_ON( "\"%s\" is no property of the method return type." ),
@@ -69,6 +71,7 @@ public enum Message {
     PROPERTYMAPPING_DEFAULT_EXPERSSION_AND_NVPMS( "DefaultExpression and nullValuePropertyMappingStrategy are both defined in @Mapping, either define a defaultExpression or an nullValuePropertyMappingStrategy." ),
     PROPERTYMAPPING_IGNORE_AND_NVPMS( "Ignore and nullValuePropertyMappingStrategy are both defined in @Mapping, either define ignore or an nullValuePropertyMappingStrategy." ),
     PROPERTYMAPPING_TARGET_THIS_AND_IGNORE( "Using @Mapping( target = \".\", ignore = true ) is not allowed. You need to use @BeanMapping( ignoreByDefault = true ) if you would like to ignore all non explicitly mapped target properties." ),
+    PROPERTYMAPPING_TARGET_THIS_NO_SOURCE( "Using @Mapping( target = \".\") requires a source property. Expression or constant cannot be used as a source."),
     PROPERTYMAPPING_EXPRESSION_AND_QUALIFIER_BOTH_DEFINED("Expression and a qualifier both defined in @Mapping, either define an expression or a qualifier."),
     PROPERTYMAPPING_INVALID_EXPRESSION( "Value for expression must be given in the form \"java(<EXPRESSION>)\"." ),
     PROPERTYMAPPING_INVALID_DEFAULT_EXPRESSION( "Value for default expression must be given in the form \"java(<EXPRESSION>)\"." ),
@@ -84,6 +87,7 @@ public enum Message {
     PROPERTYMAPPING_CANNOT_DETERMINE_SOURCE_PROPERTY_FROM_TARGET("The type of parameter \"%s\" has no property named \"%s\". Please define the source property explicitly."),
     PROPERTYMAPPING_CANNOT_DETERMINE_SOURCE_PARAMETER_FROM_TARGET("No property named \"%s\" exists in source parameter(s). Please define the source explicitly."),
     PROPERTYMAPPING_NO_SUITABLE_COLLECTION_OR_MAP_CONSTRUCTOR( "%s does not have an accessible copy or no-args constructor." ),
+    PROPERTYMAPPING_EXPRESSION_AND_CONDITION_QUALIFIED_BY_NAME_BOTH_DEFINED( "Expression and condition qualified by name are both defined in @Mapping, either define an expression or a condition qualified by name." ),
 
     CONVERSION_LOSSY_WARNING( "%s has a possibly lossy conversion from %s to %s.", Diagnostic.Kind.WARNING ),
     CONVERSION_LOSSY_ERROR( "Can't map %s. It has a possibly lossy conversion from %s to %s." ),
@@ -176,6 +180,7 @@ public enum Message {
     RETRIEVAL_MAPPER_USES_CYCLE( "The mapper %s is referenced itself in Mapper#uses.", Diagnostic.Kind.WARNING ),
     RETRIEVAL_AFTER_METHOD_NOT_IMPLEMENTED( "@AfterMapping can only be applied to an implemented method." ),
     RETRIEVAL_BEFORE_METHOD_NOT_IMPLEMENTED( "@BeforeMapping can only be applied to an implemented method." ),
+    RETRIEVAL_SOURCE_PROPERTY_NAME_WRONG_TYPE( "@SourcePropertyName can only by applied to a String parameter." ),
     RETRIEVAL_TARGET_PROPERTY_NAME_WRONG_TYPE( "@TargetPropertyName can only by applied to a String parameter." ),
 
     INHERITINVERSECONFIGURATION_DUPLICATES( "Several matching inverse methods exist: %s(). Specify a name explicitly." ),
